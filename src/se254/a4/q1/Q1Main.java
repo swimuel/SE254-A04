@@ -9,26 +9,34 @@ import java.util.Scanner;
 public class Q1Main {
 
 	public static void main(String[] args) {
-
-		// TODO Assignment 4, question 1.
 		try {
 			Scanner sc = new Scanner(System.in);
-			System.out.println("Enter the name of a class: ");
+			String mName = "";
+			System.out.print("Enter the name of a class: ");
 			String cName = sc.nextLine();
-			Class c = Class.forName(cName);
+			Class<?> c = Class.forName(cName);
 			Object obj = c.newInstance();
-			System.out.println("Fields:");
-			for(Field f : c.getFields()) {
-				System.out.println(f.toString()+" "+f.get(obj).toString());
-			}
-			System.out.println("");
-			System.out.println("Methods:");
-			for(Method m: c.getMethods()) {
-				if(m.getParameterCount()==0) {
-					System.out.println(m);					
+			while(true) {
+				System.out.println("Fields:");
+				for(Field f : c.getFields()) {
+					System.out.println(f.getName()+" = "+f.get(obj).toString());
 				}
+				System.out.println("");
+				System.out.println("Methods:");
+				for(Method m: c.getMethods()) {
+					if(m.getParameterCount()==0) {
+						System.out.println(m.getName());					
+					}
+				}
+				System.out.println("");
+				System.out.print("Choose a method to execute (or q to quit): ");
+				mName = sc.nextLine();
+				if(mName.equals("q")) {
+					break;
+				}
+				Method toInvoke = c.getMethod(mName);
+				toInvoke.invoke(obj);
 			}
-			System.out.println("");
 			sc.close();
 		} catch(Exception e) {
 			e.printStackTrace();
