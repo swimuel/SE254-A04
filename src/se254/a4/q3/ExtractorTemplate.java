@@ -19,8 +19,7 @@ public class ExtractorTemplate
   protected final String TEXT_3 = NL + "\tpublic ";
   protected final String TEXT_4 = " ";
   protected final String TEXT_5 = ";";
-  protected final String TEXT_6 = NL;
-  protected final String TEXT_7 = NL + "}";
+  protected final String TEXT_6 = NL + "}";
 
   public String generate(Object argument)
   {
@@ -44,10 +43,8 @@ public class ExtractorTemplate
     			}
     		}
     	}
-    } catch (Exception e){ 
+    } catch (Exception e){ }
     stringBuffer.append(TEXT_6);
-    }
-    stringBuffer.append(TEXT_7);
     return stringBuffer.toString();
   }
 }
