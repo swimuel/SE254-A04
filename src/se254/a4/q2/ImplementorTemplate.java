@@ -33,7 +33,7 @@ public class ImplementorTemplate
   public String generate(Object argument)
   {
     final StringBuffer stringBuffer = new StringBuffer();
-     Class c = (Class) argument; 
+     Class<?> c = (Class<?>) argument; 
     stringBuffer.append(TEXT_1);
     stringBuffer.append(c.getSimpleName());
     stringBuffer.append(TEXT_2);
@@ -70,9 +70,9 @@ public class ImplementorTemplate
 		}else{
     stringBuffer.append(TEXT_13);
     
-		}
+	}
     stringBuffer.append(TEXT_14);
-    	}
+    }
     stringBuffer.append(TEXT_15);
     return stringBuffer.toString();
   }

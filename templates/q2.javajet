@@ -1,5 +1,5 @@
 <%@ jet package="se254.a4.q2" class="ImplementorTemplate" imports="java.lang.reflect.*" %>
-<% Class c = (Class) argument; %>
+<% Class<?> c = (Class<?>) argument; %>
 public class <%=c.getSimpleName()%>Implementation implements <%=c.getSimpleName()%>{
 <% for(Method m : c.getMethods()) { %>
 	
@@ -12,6 +12,6 @@ public class <%=c.getSimpleName()%>Implementation implements <%=c.getSimpleName(
 		}else if(m.getReturnType().equals(Object.class)){%>return null; }<%
 		}else if(m.getReturnType().equals(boolean.class)){%>return false; }<%
 		}else{%> }<%
-		}%>	
-<%	}%>
+	}%>	
+<%}%>
 }

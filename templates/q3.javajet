@@ -1,2 +1,17 @@
-<%@ jet package="se254.a4.q3" class="ExtractorTemplate" %>
-// Your code goes here!
+<%@ jet package="se254.a4.q3" class="ExtractorTemplate" imports="java.lang.reflect.*" %>
+<%try{
+		Class<?> c = (Class<?>) argument.getClass();
+		Class<?> cA = (Class<?>) c.getDeclaredField("a").get(argument); 
+		Class<?> cB = (Class<?>) c.getDeclaredField("b").get(argument); %>
+public class <%=c.getDeclaredField("className").get(argument)%> {
+<%	for (Field f1 : cA.getFields()) { %>
+<%		for (Field f2 : cB.getFields()) { %>
+<%			if(f1.getType().equals(f2.getType()) && f1.getName().equals(f2.getName())) {%>
+	public <%String str = f1.getType().toString();%><%=str.substring(str.lastIndexOf(".")+1).trim()%> <%=f1.getName()%>;
+<%			}%>
+<%		}%>
+<%	}%>
+<%} catch (Exception e){ %>
+
+<% } %>
+}
