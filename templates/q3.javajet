@@ -7,7 +7,7 @@ public class <%=c.getDeclaredField("className").get(argument)%> {
 <%	for (Field f1 : cA.getFields()) { %>
 <%		for (Field f2 : cB.getFields()) { %>
 <%			if(f1.getType().equals(f2.getType()) && f1.getName().equals(f2.getName())) {%>
-	public <%String str = f1.getType().toString();%><%=str.substring(str.lastIndexOf(".")+1).trim()%> <%=f1.getName()%>;
+	public <%=f1.getType().getSimpleName()%> <%=f1.getName()%>;
 <%			}%>
 <%		}%>
 <%	}%>

@@ -35,8 +35,7 @@ public class ExtractorTemplate
     		for (Field f2 : cB.getFields()) { 
     			if(f1.getType().equals(f2.getType()) && f1.getName().equals(f2.getName())) {
     stringBuffer.append(TEXT_3);
-    String str = f1.getType().toString();
-    stringBuffer.append(str.substring(str.lastIndexOf(".")+1).trim());
+    stringBuffer.append(f1.getType().getSimpleName());
     stringBuffer.append(TEXT_4);
     stringBuffer.append(f1.getName());
     stringBuffer.append(TEXT_5);
