@@ -13,5 +13,5 @@ public class <%=c.getDeclaredField("className").get(argument)%> {
 <%	}%>
 <%} catch (Exception e){ %>
 
-<% } %>
+<%}%>
 }
